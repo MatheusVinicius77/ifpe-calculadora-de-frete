@@ -38,5 +38,5 @@ run_test_cov.bat
 
 ## Cobertura:
 
-![alt text](image-1.png)
+![alt text](image-2.png)
 ![alt text](image.png)
