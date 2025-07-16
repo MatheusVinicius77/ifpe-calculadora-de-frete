@@ -19,7 +19,7 @@ import pytest
         (1000.00, 100.0),     # CT1-04
         (999999.99, 0.0),     # CT1-05
         (100.01, 10000.0),    # CT1-06
-        (100.01, 0.0),        # CT1-10 — Teste de repetição
+        (100.01, 0.0),        # CT1-10
     ]
 )
 def test_calculo_frete_gratis_para_compras_acima_de_100(valor_compra, distancia):
@@ -51,31 +51,6 @@ def test_calculo_frete_gratis_entradas_invalidas(valor_compra, distancia, mensag
     assert str(exc_info.value) == mensagem_esperada
 
 # --------------------
-# Testes Negativos
-# --------------------
-
-@pytest.mark.parametrize(
-    "valor_compra, distancia, mensagem_esperada",
-    [
-        (0, 10, "Valor da compra deve ser maior que zero."),
-        (-50, 10, "Valor da compra deve ser maior que zero."),
-        (150, -1, "Distância de entrega deve ser maior ou igual a zero."),
-        (0, 0, "Valor da compra deve ser maior que zero."),
-        (-200, -10, "Valor da compra deve ser maior que zero."),
-    ]
-)
-def test_excecao_valores_invalidos(valor_compra, distancia, mensagem_esperada):
-    # Given: Dados inválidos para o cálculo
-    
-    # When / Then: Espera-se que uma exceção seja lançada ao criar a calculadora
-    with pytest.raises(FreteInvalidoException) as exc_info:
-        CalculadoraFrete(valor_compra=valor_compra, distancia_entrega=distancia)
-    
-    assert str(exc_info.value) == mensagem_esperada
-
-
-
-# --------------------
 # CENÁRIO DE TESTE 02
 # -----------------------
 
@@ -84,10 +59,10 @@ def test_excecao_valores_invalidos(valor_compra, distancia, mensagem_esperada):
     "valor_compra, distancia, frete_esperado",
     [
         (70.00, 0.0, 5.00),           # CT2-01
-        (100.00, 20.0, 10.00),        # CT2-02 ✅ Corrigido
-        (85.00, 10.0, 7.50),          # CT2-03 ✅ Corrigido
-        (99.99, 50.0, 17.50),         # CT2-04 (já estava certo)
-        (70.00, 15.5, 8.88),          # CT2-05 (conferido, correto)
+        (100.00, 20.0, 10.00),        # CT2-02
+        (85.00, 10.0, 7.50),          # CT2-03
+        (99.99, 50.0, 17.50),         # CT2-04
+        (70.00, 15.5, 8.88),          # CT2-05
         (100.00, 0.0, 5.00),          # CT2-06
         (70.00, 1000.0, 255.00),      # CT2-10
     ]

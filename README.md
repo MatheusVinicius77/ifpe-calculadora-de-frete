@@ -1,13 +1,5 @@
 # Projeto de testes de software.
 
-
-
-# Cobertura:
-
-![alt text](image-1.png)
-![alt text](image.png)
-
-
 # Guia para Rodar Testes com Cobertura usando `uv` e `pytest-cov`
 
 ### 1. Instale as dependências no seu ambiente `uv`:
@@ -41,3 +33,10 @@ set PYTHONPATH=src
 ```cmd
 run_test_cov.bat
 ```
+
+
+
+## Cobertura:
+
+![alt text](image-1.png)
+![alt text](image.png)
